@@ -4,7 +4,7 @@ import os.path
 import sys
 
 
-def createtable(handle, header, sqlfile, stripfilename):
+def createtable(handle, header, stripfilename, sqlfile):
     ##Create SQL table based on CSV filename
     tablestring = "DROP TABLE IF EXISTS " + stripfilename + ";\nCREATE TABLE " + stripfilename + " (\n    "
  
@@ -78,7 +78,7 @@ stripfilename =stripfilenames[count]
 reader = csv.reader(handle)
 header = next(reader)
 
-if createtable(handle, header, sqlfile, stripfilename):
+if createtable(handle, header, stripfilename, sqlfile):
     print("success!")
 
 if inputdata(handle, header, stripfilename, sqlfile):
